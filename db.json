@@ -1,0 +1,123 @@
+{
+  "admin": [
+    {
+      "user": "admin",
+      "password": "1234",
+      "id": "1"
+    }
+  ],
+  "clientes": [
+    {
+      "id": "1",
+      "userClientes": "Maria Garcia",
+      "emailClientes": "mariagarcia@gmail.com"
+    },
+    {
+      "id": "2",
+      "userClientes": "Juan Perez",
+      "emailClientes": "juanperez@hotmail.com"
+    },
+    {
+      "id": "3",
+      "userClientes": "Laura Martinez",
+      "emailClientes": "lauramartinez@yahoo.com"
+    },
+    {
+      "id": "4",
+      "userClientes": "Carlos Sanchez",
+      "emailClientes": "carlossanchez@gmail.com"
+    },
+    {
+      "id": "5",
+      "userClientes": "Ana Lopez",
+      "emailClientes": "analopez@yahoo.com"
+    },
+    {
+      "id": "8854",
+      "userClientes": "Homero Jaime Simpsons",
+      "emailClientes": "HomerojS@hotmail.com"
+    }
+  ],
+  "libros": [
+    {
+      "id": "1",
+      "nombreLibros": "Cien años de soledad",
+      "autorLibros": "Gabriel García Márquez",
+      "generoLibros": "Realismo mágico",
+      "añoLibros": "1967"
+    },
+    {
+      "id": "2",
+      "nombreLibros": "El principito",
+      "autorLibros": "Antoine de Saint-Exupéry",
+      "generoLibros": "Fábula",
+      "añoLibros": "1943"
+    },
+    {
+      "id": "3",
+      "nombreLibros": "El señor de los anillos",
+      "autorLibros": "J.R.R. Tolkien",
+      "generoLibros": "Fantasía épica",
+      "añoLibros": "1954"
+    },
+    {
+      "id": "4",
+      "nombreLibros": "Don Quijote de la Mancha",
+      "autorLibros": "Miguel de Cervantes",
+      "generoLibros": "Novela picaresca",
+      "añoLibros": "1605"
+    },
+    {
+      "id": "5",
+      "nombreLibros": "Orgullo y prejuicio",
+      "autorLibros": "Jane Austen",
+      "generoLibros": "Novela romántica",
+      "añoLibros": "1813"
+    },
+    {
+      "id": "4860",
+      "nombreLibros": "Juan carlos ",
+      "autorLibros": "Gardelito",
+      "generoLibros": "Drama",
+      "añoLibros": "1997"
+    }
+  ],
+  "alquileres": [
+    {
+      "id": "1",
+      "fechaAlquiler": "2024-05-20",
+      "userCliente": "Maria Garcia",
+      "nombreLibro": "Cien años de soledad"
+    },
+    {
+      "id": "2",
+      "fechaAlquiler": "2024-05-21",
+      "userCliente": "Juan Perez",
+      "nombreLibro": "El principito"
+    },
+    {
+      "id": "3",
+      "fechaAlquiler": "2024-05-22",
+      "userCliente": "Laura Martinez",
+      "nombreLibro": "El señor de los anillos"
+    },
+    {
+      "id": "4",
+      "fechaAlquiler": "2024-05-23",
+      "userCliente": "Carlos Sanchez",
+      "nombreLibro": "Don Quijote de la Mancha"
+    },
+    {
+      "id": "5",
+      "fechaAlquiler": "2024-05-24",
+      "userCliente": "Ana Lopez",
+      "nombreLibro": "Orgullo y prejuicio"
+    },
+    {
+      "fechaAlquiler": "2024-05-12",
+      "userCliente": "Homero Jaime Simpsons",
+      "nombreLibro": "Don Quijote de la Mancha",
+      "id": "9669"
+    }
+  ]
+}
