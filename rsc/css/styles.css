@@ -43,3 +43,48 @@ nav a:hover {
   background-color: #ddd;
   color: black;
 }
+.TituloCatalogo{
+  display: flex;
+  justify-content: center;
+  width: 90%; 
+  color:#ffffff;
+  
+}
+
+.contenedor-libros {
+  padding-top: 50px; /* Ajusta el valor según el espacio que desees en la parte superior */
+  padding-bottom: 20px; /* Ajusta el valor según el espacio que desees en la parte inferior */
+  display: grid;
+  grid-template-columns: repeat(5, 150px); /* 5 columnas de 150px cada una */
+  grid-gap: 20px; /* Espacio entre las tarjetas */
+}
+.card {
+  margin-bottom: 20px;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 15rem;
+  object-fit: cover;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 1rem;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  padding: 0.75rem 1.25rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.btn {
+  font-size: 1rem;
+}

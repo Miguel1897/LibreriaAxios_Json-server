@@ -8,22 +8,29 @@ const login = async () => {
   }
 
   try {
-    const response = await axios.get("http://localhost:3001/admin");
+    const adminResponse = await axios.get("http://localhost:3001/admin");
+    const clientResponse = await axios.get("http://localhost:3001/clientes"); // Cambio aquí
 
-    if (response.data && Array.isArray(response.data) && response.data.length > 0) {
-      const usuarioValido = response.data.find((U) => user === U.user && password === U.password);
-
-      if (usuarioValido) {
-        window.location.href = "/tp final biblio/rsc/paginas/view.html";
-      } else {
-        alert("Usuario o contraseña incorrectos.");
+    if (adminResponse.data && Array.isArray(adminResponse.data) && adminResponse.data.length > 0) {
+      const adminValidUser = adminResponse.data.find((U) => user === U.user && password === U.password);
+      if (adminValidUser) {
+        window.location.href = "./view.html";
+        return;
       }
-    } else {
-      alert("No se encontraron usuarios en la base de datos.");
     }
+
+    if (clientResponse.data && Array.isArray(clientResponse.data) && clientResponse.data.length > 0) {
+      // Aquí ajustamos para buscar por email y password
+      const clientValidUser = clientResponse.data.find((U) => user === U.emailClientes && password === U.password); // Cambio aquí
+      if (clientValidUser) {
+        window.location.href = "./catalogo.html"; // Redirect to catalog page for clients
+        return;
+      }
+    }
+
+    alert("Usuario o contraseña incorrectos.");
   } catch (error) {
     console.error("Error al procesar la solicitud:", error);
     alert("Ocurrió un error al intentar iniciar sesión. Por favor, inténtalo de nuevo más tarde.");
   }
 };
-

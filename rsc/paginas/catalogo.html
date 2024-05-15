@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Libros</title>
+  <!-- Agregar el enlace a Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Agregar tu hoja de estilos personalizada -->
+  <link rel="stylesheet" href="/tp final biblio/LibreriaAxios_Json-server/rsc/css/styles.css">
+</head>
+<body>
+  <h1 class="TituloCatalogo">Catálogo de libros</h1>
+  <div class="container">
+    <div class="row" id="contenedor-libros"></div>
+  </div>
+
+  <!-- Agregar el enlace a Bootstrap JS (opcional, solo si necesitas funcionalidades de Bootstrap JS) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <script>
+    // Función para cargar los libros del catálogo
+    const cargarCatalogo = async () => {
+      try {
+        // Realizar una solicitud GET al servidor JSON para obtener los libros del catálogo
+        const response = await fetch("/tp final biblio/LibreriaAxios_Json-server/db.json");
+        const data = await response.json();
+        const libros = data.libros;
+
+        // Llamar a la función para mostrar los libros en la página
+        mostrarLibros(libros);
+      } catch (error) {
+        console.error("Error al cargar el catálogo:", error);
+      }
+    };
+
+    // Función para mostrar los libros en la página
+    const mostrarLibros = (libros) => {
+      const contenedorLibros = document.getElementById("contenedor-libros");
+
+      libros.forEach((libro) => {
+        // Crear una nueva tarjeta para cada libro
+        const card = document.createElement("div");
+        card.classList.add("col");
+        card.innerHTML = `
+          <div class="card h-100">
+            <img src="${libro.imagen}" class="portada${libro.id}" alt="portada${libro.id}">
+            <div class="card-body">
+              <h5 class="card-title">${libro.nombreLibros}</h5>
+              <p class="card-text">${libro.autorLibros}, ${libro.generoLibros}, ${libro.añoLibros}</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">${libro.disponible ? "Disponible" : "No disponible" }</small>
+              ${libro.disponible ? `<button class="btn btn-primary" onclick="alquilarLibro(${libro.id})">Alquilar</button>` : ''}
+            </div>
+          </div>
+        `;
+        contenedorLibros.appendChild(card);
+      });
+    };
+
+    // Función para cambiar el estado de disponibilidad de un libro
+    const alquilarLibro = async (libroId) => {
+      try {
+        // Realizar una solicitud PUT al servidor JSON para cambiar el estado de disponibilidad del libro
+        const response = await fetch(`/tp final biblio/LibreriaAxios_Json-server/libros/${libroId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            disponible: false
+          })
+        });
+
+        if (response.ok) {
+          // Recargar el catálogo después de actualizar el estado de disponibilidad
+          cargarCatalogo();
+          console.log(`Se alquiló el libro con ID ${libroId}`);
+        } else {
+          console.error('Error al alquilar el libro:', response.statusText);
+        }
+      } catch (error) {
+        console.error("Error al alquilar el libro:", error);
+      }
+    };
+
+    // Llamar a la función cargarCatalogo cuando la página esté lista
+    document.addEventListener("DOMContentLoaded", cargarCatalogo);
+  </script>
+</body>
+</html>
